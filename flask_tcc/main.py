@@ -232,9 +232,12 @@ def register_payment():
         payment = Payment(**payment_data)
     except ValidationError as e:
         return handle_validation_error(e)
-    
+
     if payment.purchase_id not in purchases:
         abort(400, description='Invalid or missing purchase_id')
+        
+    if any(p['purchase_id'] == payment.purchase_id for p in payments.values()):
+        abort(400, description='Payment already registered for this purchase')
 
     payment_id = len(payments) + 1
     payments[payment_id] = payment.dict()
