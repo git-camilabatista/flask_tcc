@@ -136,7 +136,7 @@ def get_purchase(purchase_id):
     abort(404, description='Purchase not found')
 
 
-@app.route('/all-purchases', methods=['GET'])
+@app.route('/purchases', methods=['GET'])
 def get_all_purchases():
     x_user_id = request.headers.get('x_user_id', type=int)
     if x_user_id is None:
@@ -191,7 +191,7 @@ def get_payment(payment_id):
     abort(404, description='Payment not found')
 
 
-@app.route("/all-payments", methods=['GET'])
+@app.route("/payments", methods=['GET'])
 def get_all_payments():
     x_user_id = request.headers.get('x_user_id', type=int)
     if x_user_id is None:
