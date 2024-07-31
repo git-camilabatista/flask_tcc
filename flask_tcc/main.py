@@ -217,5 +217,11 @@ def get_paid_purchases():
     return jsonify({'paid_purchases_count': paid_purchases_count})
 
 
+@app.route('/admin/total_purchases', methods=['GET'])
+def get_total_purchases():
+    total_purchases_count = len(purchases)
+    return jsonify({'total_purchases_count': total_purchases_count})
+
+
 if __name__ == '__main__':
     app.run(debug=True, port=8002)
